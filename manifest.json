@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Web Audio Compressor",
+  "version": "1.0.0",
+  "description": "Compresses audio on web pages to reduce loudness differences.",
+  "permissions": [
+    "storage"
+  ],
+  "action": {
+    "default_title": "Web Audio Compressor",
+    "default_popup": "popup.html"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "common.js",
+        "content.js"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "icons": {
+    "16": "icon/icon-16.png",
+    "32": "icon/icon-32.png",
+    "48": "icon/icon-48.png",
+    "128": "icon/icon-128.png"
+  }
+}

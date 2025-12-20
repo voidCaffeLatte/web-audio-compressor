@@ -1,0 +1,255 @@
+:root {
+    --popup-width: 320px;
+
+    --space-1: 6px;
+    --space-2: 10px;
+    --space-3: 14px;
+    --space-4: 18px;
+
+    --radius: 10px;
+    --radius-sm: 6px;
+
+    --bg: #ffffff;
+    --text: #111827;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+
+    --primary: #16a34a;
+    --primary-hover: #15803d;
+
+    --status-bg: #eff6ff;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: var(--space-3);
+    inline-size: var(--popup-width);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.app-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.app-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 650;
+    line-height: 1.2;
+}
+
+.toggle-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+}
+
+.toggle-label {
+    font-size: 13px;
+    color: var(--text);
+}
+
+.app-main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--border);
+}
+
+.section__title {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 650;
+}
+
+.section__title--row {
+    justify-content: space-between;
+}
+
+.section__status-icon {
+    font-size: 14px;
+    line-height: 1;
+}
+
+.field {
+    display: grid;
+    gap: var(--space-2);
+}
+
+.field__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-2);
+}
+
+.field__label {
+    font-size: 13px;
+    color: var(--text);
+}
+
+.field__value {
+    font-size: 12px;
+    color: var(--muted);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.range {
+    width: 100%;
+    accent-color: var(--primary);
+}
+
+.btn {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn--primary {
+    background: var(--primary);
+    color: #ffffff;
+}
+
+.btn--primary:hover {
+    background: var(--primary-hover);
+}
+
+.btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.25);
+}
+
+.status {
+    margin-top: var(--space-2);
+    padding: 8px;
+    background: var(--status-bg);
+    border-radius: var(--radius-sm);
+    font-size: 12px;
+    text-align: center;
+}
+
+.status:empty {
+    display: none;
+}
+
+.switch-field {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.switch__input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+.switch {
+    display: inline-block;
+    width: 46px;
+    height: 26px;
+    border-radius: 999px;
+    background: #d1d5db;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.2s ease;
+}
+
+.switch::after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 20px;
+    height: 20px;
+    border-radius: 999px;
+    background: #ffffff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+    transition: transform 0.2s ease;
+}
+
+.switch__input:checked + .switch {
+    background: var(--primary);
+}
+
+.switch__input:checked + .switch::after {
+    transform: translateX(20px);
+}
+
+.switch__input:focus-visible + .switch {
+    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.25);
+}
+
+.meter {
+    display: grid;
+    grid-template-columns: 64px 1fr 72px;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.meter__label {
+    font-size: 11px;
+    color: var(--text);
+}
+
+.meter__bar {
+    height: 18px;
+    background: #111827;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+}
+
+.meter__fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(to right, #16a34a, #f59e0b, #ef4444);
+    transition: width 0.05s ease-out;
+}
+
+.meter--reduction .meter__fill {
+    background: linear-gradient(to right, #2563eb, #7c3aed);
+}
+
+.meter__value {
+    font-size: 11px;
+    text-align: right;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    color: var(--muted);
+}

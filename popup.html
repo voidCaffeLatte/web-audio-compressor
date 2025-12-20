@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Web Audio Compressor</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+<div class="app">
+    <header class="app-header">
+        <h1 class="app-title"><span aria-hidden="true">🎵</span> Web Audio Compressor</h1>
+
+        <div class="toggle-row">
+            <label class="toggle-label" for="enableToggle">Enabled</label>
+            <div class="switch-field">
+                <input type="checkbox" id="enableToggle" class="switch__input">
+                <label class="switch" for="enableToggle" aria-label="Toggle audio compressor"></label>
+            </div>
+        </div>
+    </header>
+
+    <main class="app-main">
+        <section class="section" aria-labelledby="settingsTitle">
+            <h2 class="section__title" id="settingsTitle"><span aria-hidden="true">⚙️</span> Settings</h2>
+
+            <div class="field">
+                <div class="field__head">
+                    <label class="field__label" for="threshold">Threshold</label>
+                    <div class="field__value"><span id="thresholdValue"></span> dB</div>
+                </div>
+                <input class="range" type="range" id="threshold">
+            </div>
+
+            <div class="field">
+                <div class="field__head">
+                    <label class="field__label" for="ratio">Ratio</label>
+                    <div class="field__value"><span id="ratioValue"></span>:1</div>
+                </div>
+                <input class="range" type="range" id="ratio">
+            </div>
+
+            <div class="field">
+                <div class="field__head">
+                    <label class="field__label" for="attack">Attack</label>
+                    <div class="field__value"><span id="attackValue"></span> s</div>
+                </div>
+                <input class="range" type="range" id="attack">
+            </div>
+
+            <div class="field">
+                <div class="field__head">
+                    <label class="field__label" for="release">Release</label>
+                    <div class="field__value"><span id="releaseValue"></span> s</div>
+                </div>
+                <input class="range" type="range" id="release">
+            </div>
+
+            <div class="field">
+                <div class="field__head">
+                    <label class="field__label" for="knee">Knee</label>
+                    <div class="field__value"><span id="kneeValue"></span> dB</div>
+                </div>
+                <input class="range" type="range" id="knee">
+            </div>
+
+            <button id="apply" class="btn btn--primary" type="button">Apply</button>
+            <div class="status" id="status" role="status" aria-live="polite"></div>
+        </section>
+
+        <section class="section" aria-labelledby="audioLevelTitle">
+            <h2 class="section__title section__title--row" id="audioLevelTitle">
+                <span><span aria-hidden="true">🎚️</span> Audio Level</span>
+                <span id="audioLevelStatusIcon" class="section__status-icon" aria-label="Audio level status"></span>
+            </h2>
+
+            <div class="meter" aria-label="Output level">
+                <div class="meter__label">Output</div>
+                <div class="meter__bar">
+                    <div class="meter__fill" id="outputMeter"></div>
+                </div>
+                <div class="meter__value"><span id="outputValue"></span> dB</div>
+            </div>
+
+            <div class="meter meter--reduction" aria-label="Gain reduction level">
+                <div class="meter__label">Gain Reduction</div>
+                <div class="meter__bar">
+                    <div class="meter__fill" id="reductionMeter"></div>
+                </div>
+                <div class="meter__value"><span id="reductionValue"></span> dB</div>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="common.js"></script>
+<script src="popup.js"></script>
+</body>
+</html>
